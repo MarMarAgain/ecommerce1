@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -123,12 +124,16 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # For sending confirmation emails
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development, it prints emails to the console. Change this in production.
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development, it prints emails to the console. Change this in Heroku.
 
 # Allauth settings
-ACCOUNT_AUTHENTICATION_METHOD = 'username'  # Or 'email' or 'username_email'
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'  #email & username
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # Or 'optional' or 'none'
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+LOGIN_URL = 'accounts/login'
+LOGIN_REDIRECT_URL = '/success' #temporary
 
 
 # Internationalization
