@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'home',
 
     # Allauth apps...
     'allauth',
@@ -67,8 +68,12 @@ ROOT_URLCONF = 'PP5_ecommerce.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': #[BASE_DIR / 'templates']
+         [
+            os.path.join(BASE_DIR,"templates"),
+            os.path.join(BASE_DIR,"templates",'allauth'),
+
+             ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
