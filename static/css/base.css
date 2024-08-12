@@ -3,11 +3,11 @@ html{
 }
 
 body{
-    background:url('media/oon-removebg-preview.png') no-repeat center center fixed;
+    background-image: url("../../media/oon-removebg-preview.png");
     background-size: cover;
     height: calc(100vh - 164px);
     color: darkslategrey;
-    font-family: 'Quicksand';
+    font-family: 'Lato';
 }
 
 /*from Bulma*/
