@@ -8,7 +8,12 @@
     </div>
     </div>
 {% endblock %}
-
+ <h1>Workshops List</h1>
+    <ul>
+        {% for workshop in workshops %}
+            <li><a href="{% url 'workshop_detail' workshop.id %}">{{ workshop.name }}</a></li>
+        {% endfor %}
+    </ul>
 {% block content%}
   <div class="container">
     <div class="row">

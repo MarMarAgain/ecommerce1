@@ -48,7 +48,8 @@ INSTALLED_APPS = [
 
     # Include the providers you want to enable, e.g.:
     'allauth.socialaccount.providers.google',
-    "products.apps.ProductsConfig"
+    "products.apps.ProductsConfig",
+    "bookings.apps.BookingsConfig"
     # 'allauth.socialaccount.providers.facebook',
     # 'allauth.socialaccount.providers.twitter',
 ]

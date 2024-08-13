@@ -1,12 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Product
 
-# Create your views here.
-def all_products(request):
+def workshop_list(request):
+    workshops = Product.objects.all()  # Adjust this query if you have specific criteria for workshops
+    return render(request, 'products/workshop_list.html', {'workshops': workshops})
 
-    products = Product.objects.all()
-
-    context ={
-        'products':products
-    }
-    return render( request, 'products/products.html', context)
+def workshop_detail(request, id):
+    workshop = get_object_or_404(Product, id=id)
+    return render(request, 'products/workshop_detail.html', {'workshop': workshop})
