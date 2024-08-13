@@ -25,6 +25,7 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [CalendarEventInline]
     list_display = ('name', 'category')
 
+
 # Registered models with Django admin
 admin.site.register(Product, ProductAdmin)
-admin.site.register(Category)
+admin.site.register(Category, )
