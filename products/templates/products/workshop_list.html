@@ -1,25 +1,36 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block page_header %}
-    <div class="container header-container">
-    <div class="row">
-        <div class ="col"></div>
-    </div>
-    </div>
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/workshop_list.css' %}">
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 {% endblock %}
- <h1>Workshops List</h1>
-    <ul>
-        {% for workshop in workshops %}
-            <li><a href="{% url 'workshop_detail' workshop.id %}">{{ workshop.name }}</a></li>
-        {% endfor %}
-    </ul>
-{% block content%}
-  <div class="container">
-    <div class="row">
-        <div class ="col">
-            {{ products }}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1>Product List</h1>
+        <div class="row">
+            {% for product in products %}
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="d-flex flex-column flex-md-row">
+                        {% if product.image %}
+                            <div class="image-container d-flex justify-content-center align-items-center mb-3 mb-md-0">
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid rounded-circle">
+                            </div>
+                        {% endif %}
+                        <div class="info-container">
+                            <h2>{{ product.name }}</h2>
+                            <p>{{ product.description }}</p>
+                            <p>Price: {{ product.price }}</p>
+                            <p>Duration: {{ product.duration }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="text-center">No products available.</p>
+            {% endfor %}
         </div>
     </div>
-    </div>
 {% endblock %}
+

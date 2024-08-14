@@ -26,7 +26,6 @@ class Product(models.Model):
 class CalendarEvent(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='events')
     start_time = models.DateTimeField()
-    end_time = models.DateTimeField()
     location = models.CharField(max_length=255)
 
     def __str__(self):

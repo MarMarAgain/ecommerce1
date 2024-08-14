@@ -7,7 +7,7 @@ from .models import Product, Category, CalendarEvent
 class CalendarEventForm(forms.ModelForm):
     class Meta:
         model = CalendarEvent
-        fields = ['product', 'start_time', 'end_time', 'location']
+        fields = ['product', 'start_time', 'location']
         widgets = {
             'start_time': forms.SplitDateTimeWidget(
                 date_attrs={'type': 'date'},

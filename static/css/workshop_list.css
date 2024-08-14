@@ -1,0 +1,28 @@
+/* Ensure image is circular and properly sized */
+.image-container img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Add margin and centering for image on smaller screens */
+.image-container {
+    margin-right: 15px; /* Space between image and text */
+}
+
+/* Center text information and ensure proper spacing */
+.info-container {
+    flex: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .d-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-container {
+        margin-right: 0;
+    }
+}
