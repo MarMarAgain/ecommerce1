@@ -1,8 +1,13 @@
+
+.main-content {
+    padding-top: 150px; /* Adjust the value as needed */
+}
+
 /* Ensure image is circular and properly sized */
 .image-container img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
+    width: 600px;
+    height: 600px;
+    object-fit: contain;
 }
 
 /* Add margin and centering for image on smaller screens */
