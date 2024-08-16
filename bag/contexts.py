@@ -1,30 +1,29 @@
 from decimal import Decimal
+from django.shortcuts import get_object_or_404
+from products.models import Product, CalendarEvent
 
 def bag_contents(request):
     bag_items = []
     total = 0
-    product_count = 0
 
-    # Assuming each item has a 'price' and 'quantity' property.
-    for item in request.session.get('bag', []):
-        product = item['product']
-        quantity = item['quantity']
+    # Assume the bag structure is {product_id: event_id}
+    bag = request.session.get('bag', {})
+
+    for product_id, event_id in bag.items():
+        product = get_object_or_404(Product, pk=product_id)
+        event = get_object_or_404(CalendarEvent, pk=event_id)  # Use CalendarEvent here
         price = Decimal(product.price)
-        total += price * quantity
-        product_count += quantity
+        total += price
+
         bag_items.append({
             'product': product,
-            'quantity': quantity,
-            'total_price': price * quantity,
+            'event': event,
+            'price': price,
         })
-
-    grand_total = total
 
     context = {
         'bag_items': bag_items,
         'total': total,
-        'product_count': product_count,
-        'grand_total': grand_total,
     }
 
     return context

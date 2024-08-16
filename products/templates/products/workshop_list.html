@@ -24,18 +24,21 @@
                     <p class="card-text"><strong>Duration:</strong> {{ product.duration }}</p>
 
                     {% if product.events.exists %}
-                    <form method="post" action="{% url 'add_to_cart' product.id %}">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <label for="eventSelect">Choose Date & Time:</label>
-                            <select class="form-control" id="eventSelect" name="event">
-                                {% for event in product.events.all %}
-                                <option value="{{ event.id }}">{{ event.start_time|date:"D, M j, Y g:i A" }} at {{ event.location }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block mt-3">Add to Cart</button>
-                    </form>
+                    <form method="post" action="{% url 'add_to_bag' product.id %}">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="eventSelect">Choose Date & Time:</label>
+        <select class="form-control" id="eventSelect" name="event">
+            {% for event in product.events.all %}
+            <option value="{{ event.id }}">{{ event.start_time|date:"D, M j, Y g:i A" }} at {{ event.location }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+    <button type="submit" class="btn btn-primary btn-block mt-3">Add to Bag</button>
+</form>
+
                     {% else %}
                     <p class="text-danger text-center">No available events for this product.</p>
                     {% endif %}
