@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     "products.apps.ProductsConfig",
     "bookings.apps.BookingsConfig",
-    "bag.apps.BagConfig"
+    "bag.apps.BagConfig",
+    "checkout.apps.CheckoutConfig"
     # 'allauth.socialaccount.providers.facebook',
     # 'allauth.socialaccount.providers.twitter',
 ]
