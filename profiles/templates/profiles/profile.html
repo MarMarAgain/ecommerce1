@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load static %}
+{% block extra_head %}
+    <link rel="stylesheet" href="/profiles/static/css/profile.css?v=1">
+    <script src="{% static 'js/profile.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <h1>Profile</h1>
+    <div class="details-form-container">
+        <div class="profile-section">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="profile-header">
+                    <img id="profile-photo" src="{% if user.profile.profile_picture %}{{ user.profile.profile_picture.url }}{% else %}{% static 'project images/default_profile.jpg' %}{% endif %}" alt="Profile Photo" class="profile-photo"><br>
+                    <label for="id_profile_picture" class="profile-picture-label">Change profile picture</label><br>
+                    <input type="file" id="id_profile_picture" name="profile_picture" class="hidden-file-input">
+                </div>
+
+                <div class="user-details">
+                    <p><strong>Email:</strong> {{ request.user.email }}</p>
+                </div>
+
+                <div class="profile-form">
+                    <div class="form-group">
+                        <label for="id_school_details"><strong>School Details:</strong></label>
+                        {{ form.school_details }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_students_info"><strong>My students are:</strong></label>
+                        {{ form.students_info }}
+                    </div>
+                    <button type="submit" class="save-changes">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <h2>Booked Workshops</h2>
+    <div class="booked-workshops">
+        {% for booked_workshop in booked_workshops %}
+            <div class="workshop">
+                <div class="workshop-details d-flex">
+                    <div class="workshop-image">
+                        <img src="{{ booked_workshop.workshop.image.url }}" alt="Workshop Image">
+                    </div>
+                    <div class="item-details">
+                        <h3>{{ booked_workshop.workshop.title }}</h3>
+                        <p>Price: €{{ booked_workshop.workshop.price }}</p>
+                        <p>Date and Time: {{ booked_workshop.date_time }}</p>
+                        <p>Quantity: {{ booked_workshop.quantity }}</p>
+                    </div>
+                </div>
+                <div class="workshop-action">
+                    <form action="{% url 'cancel_workshop' booked_workshop.workshop.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="cancel-button btn btn-danger">Cancel Workshop</button>
+                    </form>
+                </div>
+            </div>
+        {% empty %}
+            <p>No workshops booked yet.</p>
+        {% endfor %}
+    </div>
+
+    {% if message %}
+    <div class="alert alert-success mt-3" role="alert">
+        {{ message }}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+
+
+
+
+
+

@@ -1,0 +1,147 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.main-content {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+h1 {
+    font-size: 1.5rem;
+    color: #000;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+/* Profile Section */
+.profile-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-photo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.profile-picture-label {
+    display: block;
+    color: #007bff;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.profile-picture-label:hover {
+    text-decoration: underline;
+}
+
+/* User Details */
+.user-details {
+    margin-bottom: 30px;
+    text-align: left;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.user-details h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Profile Form */
+.profile-form {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Add Another Button */
+.add-another {
+    display: flex;
+    align-items: center;
+    color: #007bff;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.add-another:hover {
+    text-decoration: underline;
+}
+
+/* Save Changes Button */
+.save-changes {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.save-changes:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+    .main-content {
+        max-width: 500px;
+    }
+
+    .profile-photo {
+        width: 100px;
+        height: 100px;
+    }
+}
+

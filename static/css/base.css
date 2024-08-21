@@ -3,20 +3,11 @@ html{
 }
 
 body{
-    background-image: url("../../media/oon-removebg-preview.png");
+    background-image: url("/static/media/Masterworks.png");
     background-size: cover;
     height: calc(100vh - 164px);
     color: darkslategrey;
     font-family: 'Lato';
-}
-
-/*from Bulma*/
-.icon{
-    align-items:center;
-    display:inline-flex;
-    justify-content:center;
-    height: 1.5rem;
-    width: 1.5rem;
 }
 
 .logo-font{
@@ -53,6 +44,62 @@ body{
 
 .border-black{
     border: 1px solid black !important;
+}
+
+
+/* Footer styles */
+.footer {
+    background-color: #f3f4f6;
+    padding: 1.25rem;
+    text-align: center;
+}
+
+.footer h2{
+    color: #c82333;
+}
+
+.footer a {
+    color: teal;
+    text-decoration: none;
+    transition: color 0.3s;
+    margin-right: 10px;
+}
+
+.footer a:hover {
+    color: darkturquoise;
+}
+
+/* Media query for iPads and larger screens */
+@media (min-width: 48rem) {
+
+    .main-content {
+        margin-left: 0;
+        padding: 2rem;
+    }
+
+    .section{
+        padding: 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .nav {
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .nav-links {
+        display: flex;
+        position: relative;
+        top: auto;
+        right: auto;
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    .burger-menu {
+        display: none;
+    }
 }
 
 /*Media Query- Larger screens*/

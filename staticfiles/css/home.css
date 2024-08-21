@@ -1,0 +1,155 @@
+.main-content {
+    padding-top: 5rem;
+    flex-grow: 1;
+    margin: 20px auto 1rem;
+    background-color: #007bff;
+}
+
+.section {
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35px;
+}
+
+.image-container img {
+    max-width: 80%;
+    height: auto;
+}
+
+.circular-images {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1vh;
+    flex-wrap: wrap;
+}
+
+.circular-images img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: none;
+}
+
+/* Show only the second to fifth images on mobile */
+.circular-images img:nth-child(2),
+.circular-images img:nth-child(3),
+.circular-images img:nth-child(4),
+.circular-images img:nth-child(5) {
+    display: block;
+}
+
+.btn-book {
+    background-color: #362B3D;
+    color: white;
+    border: none;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 3vh auto 0;
+    width: fit-content;
+    text-align: center;
+}
+
+.btn-book:hover {
+ background-color: #786288;
+}
+
+
+/* About and Booking sections for mobile */
+.section-title {
+    font-size: 18px; /* Smaller font size for mobile */
+    font-weight: bold;
+    color: #362B3D;
+    margin: 5vh 0 2vh;
+    text-align: center; /* Center titles for mobile */
+}
+
+.about-text,
+.booking-text {
+    text-align: center;
+    font-size: 14px;
+    color: lightslategrey;
+    line-height: 1.6;
+    margin: 2vh 5%;
+}
+
+/* Reviews section - hidden on mobile */
+.reviews {
+    display: none;
+}
+
+/* Media query for iPads and larger screens */
+@media (min-width: 768px) {
+
+
+
+    .main-content img {
+        margin-top: 17vh;
+    }
+
+    .circular-images {
+        gap: 20px;
+    }
+
+    .circular-images img {
+        width: 100px;
+        height: 100px;
+        display: block;
+    }
+
+    .btn-book {
+        padding: 15px 25px;
+        font-size: 16px;
+        margin-top: 3vh;
+        display: block;
+        margin: 3vh auto 0;
+        width: fit-content;
+        text-align: center;
+    }
+
+    .section-title {
+        font-size: 24px;
+        text-align: left;
+        margin: 110px 0 20px;
+    }
+
+    .about-text,
+    .booking-text {
+        text-align: left;
+        font-size: 18px;
+        margin: 20px 20px 20px 1px;
+    }
+
+    /* Show reviews on larger screens */
+    .reviews {
+        display: flex; /* Show reviews as flex for larger screens */
+        justify-content: center;
+        flex-wrap: wrap; /* Allow wrapping */
+        gap: 20px;
+        margin: 5vh 0;
+    }
+
+    .review-card {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        flex: 1 0 30%; /* Set flex basis to 30% for three cards per row */
+        max-width: 300px;
+        color: #362B3D;
+    }
+}

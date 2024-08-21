@@ -1,28 +1,58 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 
-{% block page_header %}
-    <div class="container header-container">
-    <div class="row">
-        <div class ="col"></div>
-    </div>
-    </div>
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
 
-{% block content%}
-    <div class="container h-100">
-        <div class="row h-100">
-            <div class="col-7 col-md-6 my-auto">
-                <h1 class="display-4 logo-font text-black">
-                  THIS IS UNREAL KID!!
-                </h1>
-                <div class=" my-5">
-                    <h4>
-                        <a href="" class="shop-now-button btn btn-1g rounded-0 text-uppercase py-3">BUY BUY BUY!</a>
-                        </h4>
-                </div>
+{% block content %}
+    <main class="main-content container">
+        <div class="image-container">
+            <img src="{% static 'media/Masterworks.png' %}" alt="Masterworks"></div>
+        <div class="circular-images">
+            <img src="{% static 'media/MWCS.png' %}" alt="Comparison Studies">
+            <img src="{% static 'media/MWFS.png' %}" alt="Film Studies">
+            <img src="{% static 'media/MWS.png' %}" alt="Shakespeare">
+            <img src="{% static 'media/MWNN.png' %}" alt="Nano Nagle Case Study">
+            <img src="{% static 'media/MWRR.png' %}" alt="Relics Retold">
+            <img src="{% static 'media/MWWS.png' %}" alt="The Wallace Sisters Case Study">
+        </div>
+        <br>
+        <a href="{% url 'workshop_list' %}" class="btn-book">Book Now</a>
+        <h2 class="section-title" id="about-text">About</h2>
+        <p class="about-text">Ocean Of Notions Performance company is proud to present: <br>Masterworks- an educational outreach service spearheaded by our founder Judie Charmers. <br><br>
+            Judie is a performer, director, producer and most importantly a dedicated teacher. Having trained in shakespearean classics in Themes University’s Royal College of Music and Media, Judie has both the experience and a passion for sharing her love of literature with the younger people- balancing enough structure to achieve the aims of the classroom while being fluid enough to meet the students where they are on a given day. Over the past X years , her face has become a familiar one in English classrooms across the country, and by popular demand she has also established a comparatives course for senior cycle and a film studies class for all ages.
+            Judie truly is a talented teacher with experience that is second to none. Her understanding of Shakespearean classics, film and overall story structure is invaluable to any student, often leaving an impression that lasts far beyond the classroom
+        </p>
 
+        <div class="reviews">
+            <div class="review-card">
+                <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua”</p>
+                <p>Jane Doe</p>
+                <p>Film Studies</p>
+            </div>
+            <div class="review-card">
+                <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua”</p>
+                <p>James Doe</p>
+                <p>Comparison Studies</p>
+            </div>
+            <div class="review-card">
+                <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua”</p>
+                <p>John Doe</p>
+                <p>The Wallace Sisters</p>
             </div>
         </div>
-    </div>
+
+        <h2 class="section-title">Booking</h2>
+        <p class="booking-text">To ensure we receive accurate school information and maintain the highest level of confidentiality, teachers must sign up and create a profile. <br><br>This secure process also enables convenient scheduling, allowing you to modify workshop times and dates up to 48 hours in advance. Rest assured, all payments are handled securely through our website. Join us today and bring engaging, educational experiences to your students effortlessly!</p>
+    </main>
 {% endblock %}
+
+
+
+
+
+
