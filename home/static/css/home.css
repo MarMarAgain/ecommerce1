@@ -67,6 +67,8 @@
 
 .btn-book:hover {
  background-color: #786288;
+    color: white;
+    text-decoration: none;
 }
 
 
@@ -110,16 +112,6 @@
         width: 100px;
         height: 100px;
         display: block;
-    }
-
-    .btn-book {
-        padding: 15px 25px;
-        font-size: 16px;
-        margin-top: 3vh;
-        display: block;
-        margin: 3vh auto 0;
-        width: fit-content;
-        text-align: center;
     }
 
     .section-title {

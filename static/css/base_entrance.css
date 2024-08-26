@@ -1,0 +1,17 @@
+/* Ensure container has appropriate padding and card is aligned to the left */
+.container {
+    padding: 0 15px; /* Add padding to the container to prevent card from touching the edges */
+}
+
+.row {
+    margin-left: 0; /* Align row to the left */
+    margin-right: 0; /* Align row to the left */
+}
+
+.card {
+    padding: 30px;
+    margin: 0px;
+    margin-top: 30px;
+    border: none;
+    box-shadow: none;
+}

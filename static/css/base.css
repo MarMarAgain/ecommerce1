@@ -1,20 +1,58 @@
-html{
-    height:100%;
+html, body {
+    height: 100%;
+    margin: 0;
 }
 
-body{
-    background-image: url("/static/media/Masterworks.png");
+/* Flexbox layout to ensure footer is at the bottom */
+body {
+    display: flex;
+    flex-direction: column;
     background-size: cover;
-    height: calc(100vh - 164px);
     color: darkslategrey;
     font-family: 'Lato';
 }
 
-.logo-font{
-    text-transform:uppercase;
+/* Adjusting body for content spacing */
+main {
+    flex: 1; /* Allows the main content to grow and push the footer to the bottom */
+    padding-top: 70px; /* Adjust based on header height */
 }
-.main-logo-link{
-    width:fit-content;
+
+/* Ensure the footer stays at the bottom */
+.footer {
+    background-color: #f3f4f6;
+    padding: 1.25rem;
+    text-align: center;
+    margin-top: auto; /* Pushes the footer to the bottom */
+}
+
+.footer h2 {
+    color: #362B3D;
+}
+
+.footer a {
+    color: teal;
+    text-decoration: none;
+    transition: color 0.3s;
+    margin-right: 10px;
+}
+
+.footer a:hover {
+    color: darkturquoise;
+}
+
+/* Header adjustments */
+.header-container {
+    padding-top: 70px; /* Adjust based on header height */
+}
+
+/* Additional styling */
+.logo-font {
+    text-transform: uppercase;
+}
+
+.main-logo-link {
+    width: fit-content;
 }
 
 .shop-now-button {
@@ -34,50 +72,31 @@ body{
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
-    background: blue;
+    background: white;
     color: white;
 }
 
-.text-black{
-    color: purple; !important;
+.text-black {
+    color: #362B3D !important;
 }
 
-.border-black{
+.text-black:hover {
+    color: #786288 !important;
+}
+
+.border-black {
     border: 1px solid black !important;
 }
 
 
-/* Footer styles */
-.footer {
-    background-color: #f3f4f6;
-    padding: 1.25rem;
-    text-align: center;
-}
-
-.footer h2{
-    color: #c82333;
-}
-
-.footer a {
-    color: teal;
-    text-decoration: none;
-    transition: color 0.3s;
-    margin-right: 10px;
-}
-
-.footer a:hover {
-    color: darkturquoise;
-}
-
 /* Media query for iPads and larger screens */
 @media (min-width: 48rem) {
-
     .main-content {
         margin-left: 0;
         padding: 2rem;
     }
 
-    .section{
+    .section {
         padding: 2rem;
         max-width: 800px;
         margin: 0 auto;
@@ -102,25 +121,22 @@ body{
     }
 }
 
-/*Media Query- Larger screens*/
-@media (min-width:1200px) {
-    .container{
+
+/* Media Query - Larger screens */
+@media (min-width: 1200px) {
+    .container {
         max-width: 80%;
     }
 }
 
-/*Media Query- Medium screens*/
+/* Media Query - Medium screens */
 @media (min-width: 992px) {
-    .fixed-top-desktop-only{
+    .fixed-top-desktop-only {
         position: fixed;
-        top:0;
-        right:0;
-        left:0;
+        top: 0;
+        right: 0;
+        left: 0;
         z-index: 1030;
     }
-
-    .header-container{
-        padding-top: 164px;
-
-    }
 }
+
