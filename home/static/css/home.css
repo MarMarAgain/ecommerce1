@@ -2,7 +2,7 @@
     padding-top: 5rem;
     flex-grow: 1;
     margin: 20px auto 1rem;
-    background-image: url('static/media/Masterworks.png ');
+    background-image: url('static/media/MW Hero.svg');
 
 }
 
@@ -19,19 +19,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 35px;
+    margin-top: 10px;
 }
 
 .image-container img {
-    max-width: 80%;
+    max-width: 57%;
     height: auto;
 }
 
 .circular-images {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-top: 1vh;
+    gap: 5px;
+    margin-top: 0.04vh;
     flex-wrap: wrap;
 }
 
