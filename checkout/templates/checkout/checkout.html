@@ -11,7 +11,17 @@
 {% block content %}
 <div class="container main-content mt-4">
     <h2 class="my-4 text-center">Checkout</h2>
-    <form method="post" novalidate>
+    {% if messages %}
+        <div class="alert alert-dismissible fade show {% if messages.tags == 'error' %}alert-danger{% else %}alert-success{% endif %}" role="alert">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+    <form id="payment-form" method="post" novalidate>
         {% csrf_token %}
         {% for field in form %}
             <div class="mb-3">
@@ -32,10 +42,12 @@
             <!-- Display form errors -->
             <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
             <!-- Pass the client secret to the view to get the payment intent id -->
-            <input type="hidden" value="{{ client_secret }}" name="client_secret">
+            <input type="hidden" id="client-secret" value="{{ client_secret }}" name="client_secret">
+            <input type="hidden" id="payment-method-id" name="payment_method_id">
+
         </fieldset>
 
-        <button type="submit" class="btn btn-primary btn-block mt-3">Submit Order</button>
+        <button type="submit" id="submit-button" class="btn btn-primary btn-block mt-3">Submit Order</button>
     </form>
 </div>
 {% endblock %}
@@ -44,9 +56,7 @@
     <script>
         // Pass the Stripe public key to the JavaScript file
         const stripePublicKey = "{{ stripe_public_key }}";
+        const clientSecret = "{{ client_secret }}";
     </script>
     <script src="{% static 'checkout/js/stripe_payment.js' %}"></script>
 {% endblock %}
-
-
-
