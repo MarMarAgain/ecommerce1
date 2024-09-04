@@ -15,7 +15,7 @@
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="profile-header">
-                    <img id="profile-photo" src="{% if user.profile.profile_picture %}{{ user.profile.profile_picture.url }}{% else %}{% static 'media/default_profile.jpg' %}{% endif %}" alt="Profile Photo" class="profile-photo"><br>
+                    <img id="profile-photo" src="{% if user.profile.profile_picture %}{{ user.profile.profile_picture.url }}{% else %}{% static 'media/../../../../PP4MWV2/static/media/default_profile.jpg' %}{% endif %}" alt="Profile Photo" class="profile-photo"><br>
                     <label for="id_profile_picture" class="profile-picture-label">Change profile picture</label><br>
                     <input type="file" id="id_profile_picture" name="profile_picture" class="hidden-file-input">
                 </div>

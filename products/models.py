@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Category (models.Model):
@@ -30,3 +31,11 @@ class CalendarEvent(models.Model):
 
     def __str__(self):
         return f"Event for {self.product.name} on {self.start_time}"
+
+class Booking(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    date_time = models.DateTimeField()
+
+    def __str__(self):
+        return f"{self.user.username} booked {self.product.name} at {self.date_time}"

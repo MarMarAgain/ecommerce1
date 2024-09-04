@@ -10,7 +10,7 @@ def product_list(request):
     return render(request, 'products/workshop_list.html', {'products': products})
 
 
-def add_to_cart(request, product_id):
+def add_to_cart(request, event_id):
     if request.method == "POST":
         event_id = request.POST.get('event')
         print(f"Received event_id: {event_id}")  # Debugging line

@@ -5,6 +5,10 @@ from bag.contexts import bag_contents
 from django.conf import settings
 import stripe
 from .stripe_func import attach_payment_method, create_customer
+from products.models import CalendarEvent, Booking
+from profiles.models import Profile
+from .models import OrderLineItem, Order
+
 
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
@@ -13,7 +17,6 @@ def checkout(request):
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
-            # Don't save the form immediately. Instead, save after payment confirmation.
             payment_method_id = request.POST.get('payment_method_id')
             if not payment_method_id:
                 messages.error(request, "Payment method is required.")
@@ -50,10 +53,22 @@ def checkout(request):
                 )
 
                 if intent.status == 'succeeded':
+                    # Payment was successful
+                    # Create the order and bookings
+                    order = create_order(form.cleaned_data, current_bag, request.user)
+
+                    # Create bookings for each event in the cart
+                    for item in current_bag['bag_items']:
+                        event = CalendarEvent.objects.get(id=item['event_id'])  # Get event by ID
+                        Booking.objects.create(
+                            user=request.user,
+                            product=item['product'],
+                            date_time=event.start_time  # Assuming `start_time` is the datetime for the booking
+                        )
+
                     messages.success(request, "The payment has been successfully completed.")
                     return redirect('checkout_success')  # Redirect to a success page
 
-                # If payment intent does not succeed
                 messages.error(request, "Payment failed. Please try again.")
                 return render(request, 'checkout/checkout.html', {
                     'form': form,
@@ -70,13 +85,10 @@ def checkout(request):
                 messages.error(request, f"Unexpected error: {str(e)}")
                 return render(request, 'checkout/checkout.html', {'form': form})
 
-        # If form is invalid
         return render(request, 'checkout/checkout.html', {'form': form})
 
     else:
         form = OrderForm()
-
-        # Get the bag contents and total amount for the initial view rendering
         current_bag = bag_contents(request)
         total = current_bag['total']
         stripe_total = round(total * 100)
@@ -101,6 +113,27 @@ def checkout(request):
             return render(request, 'checkout/checkout.html', {'form': form})
 
 
+def create_order(form_data, bag, user):
+    """ Create an order instance based on the form and bag data """
+    order = Order(
+        user_profile=Profile.objects.get(user=user),
+        full_name=form_data['full_name'],
+        phone_number=form_data['phone_number'],
+        email=form_data['email'],
+        school_name=form_data['school_name'],
+        grand_total=bag['total']
+    )
+    order.save()
+
+    for item in bag['bag_items']:
+        OrderLineItem.objects.create(
+            order=order,
+            product=item['product'],
+            event=CalendarEvent.objects.get(id=item['event_id']),
+            quantity=item['quantity']
+        )
+
+    return order
 
 def checkout_success(request):
     """ A view to return the checkout success page """

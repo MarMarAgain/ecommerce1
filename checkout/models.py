@@ -11,9 +11,6 @@ class Order(models.Model):
     phone_number = models.CharField(max_length=50, null=False, blank=False)
     email = models.CharField(max_length=250, null=False, blank=False)
     school_name = models.CharField(max_length=50, null=False, blank=False)
-    street_address1 = models.CharField(max_length=80, null=False, blank=False)
-    street_address2 = models.CharField(max_length=80, null=False, blank=False)
-    postcode = models.CharField(max_length=10, null=False, blank=False)
     date_of_birth = models.DateField(auto_now_add=True)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
 

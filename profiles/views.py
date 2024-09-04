@@ -8,15 +8,15 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from checkout.models import OrderLineItem
 from .models import Profile
-from products.models import Product
+from products.models import Product, Booking
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 @login_required
 def profile(request):
-    """ Display the user's profile. """
-    context = {}  # Add any necessary context data here
-    return render(request, 'profiles/profile.html', context)
+    profile = Profile.objects.get(user=request.user)
+    bookings = Booking.objects.filter(user=request.user)
+    return render(request, 'profiles/profile.html', {'profile': profile, 'bookings': bookings})
 
 
 

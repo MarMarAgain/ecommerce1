@@ -12,7 +12,7 @@ class OrderAdmin(admin.ModelAdmin):
 
     # fieldsets should define fields within a section (can be nested)
     fields = ('order_number', 'full_name', 'email', 'phone_number',
-              'postcode', 'street_address1', 'street_address2')
+              'postcode')
 
     list_display = ('order_number', 'date_of_birth', 'full_name')
 
