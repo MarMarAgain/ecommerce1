@@ -46,13 +46,15 @@ def checkout(request):
                     automatic_payment_methods={
                         'enabled': True,
                         'allow_redirects': 'never'
-                }
+                    }
                 )
 
                 if intent.status == 'succeeded':
                     messages.success(request, "The payment has been successfully completed.")
-                    return redirect('checkout')
+                    return redirect('checkout_success')  # Redirect to a success page
 
+                # If payment intent does not succeed
+                messages.error(request, "Payment failed. Please try again.")
                 return render(request, 'checkout/checkout.html', {
                     'form': form,
                     'stripe_public_key': stripe_public_key,
@@ -68,6 +70,9 @@ def checkout(request):
                 messages.error(request, f"Unexpected error: {str(e)}")
                 return render(request, 'checkout/checkout.html', {'form': form})
 
+        # If form is invalid
+        return render(request, 'checkout/checkout.html', {'form': form})
+
     else:
         form = OrderForm()
 
@@ -80,7 +85,7 @@ def checkout(request):
             stripe.api_key = stripe_secret_key
             intent = stripe.PaymentIntent.create(
                 amount=stripe_total,
-                currency='eur',
+                currency=settings.STRIPE_CURRENCY,
                 metadata={'integration_check': 'accept_a_payment'},
             )
             context = {
@@ -94,3 +99,9 @@ def checkout(request):
         except Exception as e:
             messages.error(request, f"Unexpected error: {str(e)}")
             return render(request, 'checkout/checkout.html', {'form': form})
+
+
+
+def checkout_success(request):
+    """ A view to return the checkout success page """
+    return render(request, 'checkout/checkout_success.html')
