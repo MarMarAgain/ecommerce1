@@ -5,15 +5,7 @@ body {
     margin: 0;
     padding: 0;
     color: #333;
-}
-
-.main-content {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding-top: 80px;
 }
 
 /* Header */
@@ -144,4 +136,3 @@ h1 {
         height: 100px;
     }
 }
-

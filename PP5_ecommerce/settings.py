@@ -1,7 +1,7 @@
 from pathlib import Path
 import environ
 import os
-
+from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -9,8 +9,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
 environ.Env.read_env()  # Reads the .env file
 
+#Load variables from .env file
+load_dotenv()
+
 # Quick-start development settings - unsuitable for production
-SECRET_KEY = env('SECRET_KEY', default='django-insecure-*6xn86+c#wzt4(og62plws0p)0mg0##s^1j%&-qsndc=^dr2a0')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = env.bool('DEBUG', default=True)
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
@@ -117,7 +120,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
-LOGIN_URL = 'accounts/login'
+LOGIN_URL = '/accounts/login'
 LOGIN_REDIRECT_URL = '/success'
 
 # Internationalization

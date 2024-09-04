@@ -44,6 +44,7 @@ main {
 /* Header adjustments */
 .header-container {
     padding-top: 70px; /* Adjust based on header height */
+    border-bottom: 100px;
 }
 
 /* Additional styling */

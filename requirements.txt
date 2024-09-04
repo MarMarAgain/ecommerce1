@@ -32,3 +32,4 @@ stripe==10.8.0
 typing_extensions==4.12.2
 urllib3==2.2.2
 django-environ==0.11.2
+python-dotenv
